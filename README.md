@@ -15,10 +15,15 @@ site, and collect submissions via **email**, the **WordPress database**, and/or 
 
 ## Features
 
-- **Contacts admin screen** under **Comments → Contacts**, with two tabs:
-  **Forms** and **Settings** (Settings reserved for a future release).
-- **Form cards.** Each form is a card showing its name above it. A fresh install
-  shows only a **+** card; click it to create a form.
+- **Contacts admin screen** — a top-level **Contacts** menu in the sidebar placed
+  directly **below** Comments (a sibling of Comments, not a child of it), with two
+  tabs: **Forms** and **Settings** (Settings reserved for a future release).
+- **Bundled example form.** A fresh install ships with a ready-to-use **Contact**
+  form that mirrors the live Enkompass contact form (name, email, company, the two
+  AWS dropdowns, message and privacy checkbox), with the Database destination
+  enabled so it captures submissions immediately.
+- **Form cards.** Each form is a card showing its name above it. Use the **+** card
+  to add more forms.
 - **Auto-numbering.** New forms are named `FORM<n>`, one higher than the highest
   existing `FORM<n>`. Custom-named forms (e.g. `CONTACT`) are ignored for
   numbering, so the first auto form is always `FORM1`.
@@ -53,15 +58,18 @@ site, and collect submissions via **email**, the **WordPress database**, and/or 
 
 1. Copy this directory into `wp-content/plugins/enkompass-contact/`.
 2. Activate **Enkompass Contact** in **Plugins**.
-3. Open **Comments → Contacts** and click the **+** card to create your first
-   form.
+3. Open **Contacts** in the admin sidebar (directly below **Comments**). A
+   ready-made **Contact** form is already there — click it to edit, or use the
+   **+** card to add another.
 
 On activation the plugin creates two tables (`{prefix}enk_forms`,
-`{prefix}enk_submissions`) and a protected `uploads/enkompass-forms/` directory.
+`{prefix}enk_submissions`), a protected `uploads/enkompass-forms/` directory, and
+seeds the bundled Enkompass **Contact** form.
 
 ## Usage
 
-1. **Create** a form with the **+** card and name it.
+1. **Start** from the bundled **Contact** form, or **create** a new one with the
+   **+** card and name it.
 2. **Click the card** to open the builder. Drag field types from the right
    palette onto the grid, click a field to edit its properties on the left, and
    click empty canvas to edit form settings (title, CSS class, destinations).

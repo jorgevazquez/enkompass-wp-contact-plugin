@@ -32,13 +32,16 @@ final class Admin
 
     public function add_menu(): void
     {
-        $this->hookSuffix = (string) add_submenu_page(
-            'edit-comments.php',
+        // Top-level menu placed directly BELOW Comments (position 25) in the
+        // admin sidebar — a sibling of Comments, not a child of it.
+        $this->hookSuffix = (string) add_menu_page(
             __('Contacts', 'enkompass'),
             __('Contacts', 'enkompass'),
             ENK_CAP,
             ENK_MENU_SLUG,
-            [Admin_Page::class, 'render']
+            [Admin_Page::class, 'render'],
+            'dashicons-email-alt',
+            25.5
         );
     }
 

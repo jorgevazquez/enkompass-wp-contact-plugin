@@ -9,7 +9,7 @@
 
 defined('ABSPATH') || exit;
 
-$enk_base_url = admin_url('edit-comments.php?page=' . ENK_MENU_SLUG);
+$enk_base_url = admin_url('admin.php?page=' . ENK_MENU_SLUG);
 ?>
 <div class="wrap enk-wrap">
     <h1 class="wp-heading-inline"><?php esc_html_e('Contacts', 'enkompass'); ?></h1>

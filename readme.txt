@@ -12,9 +12,11 @@ Drag-and-drop contact form builder styled for the Enkompass site, with email, da
 
 == Description ==
 
-Enkompass Contact adds a "Contacts" screen under Comments where you build forms
-with a visual drag-and-drop editor and collect their submissions. Forms render on
-the front end using the Enkompass theme's own classes, so they match the site.
+Enkompass Contact adds a top-level "Contacts" menu in the admin sidebar (directly
+below Comments) where you build forms with a visual drag-and-drop editor and
+collect their submissions. A fresh install ships with a ready-to-use Contact form
+mirroring the live Enkompass contact form. Forms render on the front end using the
+Enkompass theme's own classes, so they match the site.
 
 Features:
 
@@ -32,7 +34,7 @@ Features:
 
 1. Upload the plugin to wp-content/plugins/enkompass-contact.
 2. Activate it through the Plugins screen.
-3. Go to Comments > Contacts and click the + card to create a form.
+3. Open Contacts in the sidebar (just below Comments). A ready-made Contact form is already there; click it to edit, or use the + card to add another.
 
 == Frequently Asked Questions ==
 

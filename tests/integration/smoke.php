@@ -34,9 +34,21 @@ function check(string $name, bool $cond): void
 
 echo "== Enkompass Contact integration smoke ==\n";
 
-// 1) Create a form (auto-numbered FORM1).
+// 0) Seeding: a fresh install ships with the Enkompass example "Contact" form.
+Form_Repository::maybe_seed_example();
+Form_Repository::maybe_seed_example(); // idempotent — must not duplicate
+$seeded = Form_Repository::all();
+check('seeding creates exactly one form', count($seeded) === 1);
+check('seeded form is named Contact', $seeded[0]['name'] === 'Contact');
+check('seeded form has 9 fields (8 inputs + submit)', count($seeded[0]['fields']) === 9);
+$seededHtml = Form_Renderer::render($seeded[0]);
+check('seeded form renders the select + checkbox + Send message', str_contains($seededHtml, '<select') && str_contains($seededHtml, 'type="checkbox"') && str_contains($seededHtml, 'Send message'));
+check('seeded form enables the database destination', !empty($seeded[0]['destinations']['database']['enabled']));
+
+// 1) Create another form — auto-numbered FORM1 (the custom-named "Contact" is ignored).
 $id = Form_Repository::create();
-check('create returns id', $id === 1);
+check('next created form is FORM1 (custom name ignored)', Form_Repository::get($id)['name'] === 'FORM1');
+check('create returns id', $id === 2);
 $form = Form_Repository::get($id);
 check('new form is named FORM1', $form['name'] === 'FORM1');
 check('new form has no fields', $form['fields'] === []);

@@ -31,6 +31,9 @@ final class Activator
 
         // Create + harden the CSV storage directory.
         enk_uploads_dir();
+
+        // Ship a ready-to-use Enkompass contact form on a fresh install.
+        Form_Repository::maybe_seed_example();
     }
 
     /**
