@@ -1,0 +1,10 @@
+{
+    "name": "enkompass-contact",
+    "version": "1.0.0",
+    "description": "Enkompass Contact form builder plugin assets and JS tests.",
+    "license": "GPL-2.0-or-later",
+    "private": true,
+    "scripts": {
+        "test": "node tests/js/run.js"
+    }
+}

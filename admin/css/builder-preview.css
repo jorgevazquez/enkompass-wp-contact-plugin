@@ -1,0 +1,146 @@
+/**
+ * Builder field-preview styling. Reproduces the live Enkompass `.form-card`
+ * field look (light-on-dark) so widgets dragged onto the builder canvas resemble
+ * the front-end form. ALL rules are scoped under #enk-canvas so they never leak
+ * into the surrounding WP admin chrome.
+ *
+ * @package Enkompass\Contact
+ */
+
+#enk-canvas {
+    /* Enkompass theme tokens (also consumed by the rules below). */
+    --surface: #211A16;
+    --bg-2: #1A1512;
+    --border: #3A2E27;
+    --primary: #FF5A36;
+    --primary-2: #FF7A3D;
+    --primary-fg: #1A0C06;
+    --fg: #FBF4EE;
+    --fg-faint: #7E6E63;
+    --r-sm: 8px;
+    --r-pill: 999px;
+
+    background: var(--surface);
+    color: var(--fg);
+}
+
+/* The widget content surface inherits the dark form background. */
+#enk-canvas .grid-stack-item-content {
+    background: var(--surface);
+    color: var(--fg);
+    border-radius: var(--r-sm);
+    overflow: auto;
+    padding: 8px 10px;
+    box-sizing: border-box;
+}
+
+#enk-canvas .enk-widget {
+    height: 100%;
+}
+
+/* ------------------------------------------------------------------ */
+/* Field wrapper + label                                              */
+/* ------------------------------------------------------------------ */
+
+#enk-canvas .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#enk-canvas .label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--fg);
+}
+
+#enk-canvas .req {
+    color: var(--primary);
+    margin-left: 2px;
+}
+
+/* Faint submission-key hint shown in the builder only. */
+#enk-canvas .enk-field-name {
+    font-size: 11px;
+    color: var(--fg-faint);
+}
+
+/* ------------------------------------------------------------------ */
+/* Controls: input / textarea / select                               */
+/* ------------------------------------------------------------------ */
+
+#enk-canvas .input,
+#enk-canvas .textarea,
+#enk-canvas .select {
+    width: 100%;
+    box-sizing: border-box;
+    background: var(--bg-2);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    padding: 12px 14px;
+    color: var(--fg);
+    font-size: 14px;
+}
+
+#enk-canvas .input::placeholder,
+#enk-canvas .textarea::placeholder {
+    color: var(--fg-faint);
+}
+
+#enk-canvas .textarea {
+    min-height: 70px;
+    resize: none;
+}
+
+#enk-canvas .select {
+    appearance: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Choice fields (checkbox / radio)                                  */
+/* ------------------------------------------------------------------ */
+
+#enk-canvas .check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--fg);
+    font-size: 14px;
+}
+
+#enk-canvas .check input {
+    accent-color: var(--primary);
+}
+
+/* ------------------------------------------------------------------ */
+/* Action buttons                                                     */
+/* ------------------------------------------------------------------ */
+
+#enk-canvas .form-foot {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#enk-canvas .btn {
+    border: none;
+    border-radius: var(--r-pill);
+    padding: 9px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: default;
+    color: var(--fg);
+    background: transparent;
+}
+
+#enk-canvas .btn--primary {
+    background: var(--primary);
+    color: var(--primary-fg);
+}
+
+#enk-canvas .btn--ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--fg);
+}

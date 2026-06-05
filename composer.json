@@ -1,0 +1,30 @@
+{
+    "name": "enkompass/contact",
+    "description": "Enkompass Contact — a WordPress contact form builder plugin styled for the Enkompass site.",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": ">=8.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Enkompass\\Contact\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:integration": "php tests/integration/smoke.php",
+        "test:all": [
+            "@test",
+            "@test:integration"
+        ]
+    },
+    "require-dev": {
+        "brain/monkey": "^2.7",
+        "mockery/mockery": "^1.6",
+        "phpunit/phpunit": "^13.2"
+    }
+}

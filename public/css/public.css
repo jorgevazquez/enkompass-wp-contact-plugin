@@ -1,0 +1,117 @@
+/*
+ * Enkompass front-end form styles.
+ *
+ * Deliberately minimal: the live Enkompass theme provides most of the visual
+ * styling for `.form-card`, `.field`, `.input`, `.btn`, etc. This file only
+ * adds (a) the honeypot hide, (b) error/success states the JS toggles, and
+ * (c) a small set of LOW-SPECIFICITY fallbacks so a form is still legible if
+ * it is rendered on a page where the Enkompass theme is absent.
+ *
+ * @package Enkompass\Contact
+ */
+
+/* Honeypot — belt-and-suspenders hide (the renderer also inlines this). */
+.enk-hp {
+    position: absolute !important;
+    left: -9999px !important;
+    height: 0 !important;
+    width: 0 !important;
+    overflow: hidden !important;
+}
+
+/* Error + success states toggled by public/js/form.js. */
+.field.enk-has-error .input,
+.field.enk-has-error .textarea,
+.field.enk-has-error .select {
+    border-color: #e2401c;
+}
+
+.enk-error {
+    color: #e2401c;
+    display: block;
+    margin-top: 4px;
+    font-size: 12.5px;
+}
+
+.enk-success {
+    padding: 14px 16px;
+    border-radius: 8px;
+}
+
+/* -------------------------------------------------------------------------
+ * FALLBACK STYLES (theme-absent only)
+ *
+ * These give the form a legible default layout/spacing when the Enkompass
+ * theme's CSS variables and component classes are NOT present. They use
+ * :where() (zero specificity) so ANY real theme rule always wins, and they
+ * avoid importing fonts or setting brand colours that would fight a theme.
+ * ---------------------------------------------------------------------- */
+:where(.form-card) {
+    display: block;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+:where(.form-card .form-grid) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+:where(.form-card .field) {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+:where(.form-card .field.full) {
+    grid-column: 1 / -1;
+}
+
+:where(.form-card .label) {
+    display: block;
+    font-weight: 600;
+}
+
+:where(.form-card input[type="text"]),
+:where(.form-card input[type="email"]),
+:where(.form-card input[type="date"]),
+:where(.form-card textarea),
+:where(.form-card select) {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+:where(.form-card textarea) {
+    min-height: 120px;
+    resize: vertical;
+}
+
+:where(.form-card .form-foot) {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+:where(.form-card .form-foot button) {
+    padding: 10px 18px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font: inherit;
+}
+
+:where(.form-card .req) {
+    color: #e2401c;
+}
+
+@media (max-width: 540px) {
+    :where(.form-card .form-grid) {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
