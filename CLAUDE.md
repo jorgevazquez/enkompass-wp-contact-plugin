@@ -24,6 +24,11 @@ an admin form builder, a public-facing form renderer, and a Gutenberg block
 - Document everything.
 - Save documentation to Notion and keep it in sync.
 
+##  Test Site
+- The local test site is located at ~/Users/mrforged/Studio/enkompass/
+- When testing to this site, always respect /Users/mrforged/Studio/enkompass/CLAUDE.md and /Users/mrforged/Studio/enkompass/STUDIO.md and /Users/mrforged/Studio/enkompass/AGENTS.md
+
+
 ## Architecture & directory conventions
 
 | Path | Purpose |
