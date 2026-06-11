@@ -1,6 +1,6 @@
 <?php
 /**
- * Admin subsystem: registers the Contacts submenu, enqueues the builder assets
+ * Admin subsystem: registers the top-level Contacts menu, enqueues the builder assets
  * and serves secured CSV downloads.
  *
  * @package Enkompass\Contact
@@ -64,7 +64,10 @@ final class Admin
         wp_enqueue_script('enk-builder', $base . 'admin/js/builder.js', ['enk-gridstack', 'enk-field-types', 'enk-validation'], $ver, true);
         wp_enqueue_script('enk-admin', $base . 'admin/js/admin.js', ['enk-builder'], $ver, true);
 
-        wp_localize_script('enk-admin', 'ENK', [
+        // Attach the settings object to the FIRST handle that reads it:
+        // field-types.js and builder.js capture window.ENK at load time, and
+        // localized data only prints immediately before its own handle's tag.
+        wp_localize_script('enk-field-types', 'ENK', [
             'restUrl'         => esc_url_raw(rest_url(ENK_REST_NS)),
             'nonce'           => wp_create_nonce('wp_rest'),
             'csvAction'       => admin_url('admin-post.php'),
